@@ -39,7 +39,7 @@ transpose_y_to_z!(tarray)
 transform = DistributedTransform(tarray)
 
 # After a forward and backward transform the result should not have changed
-fft(transform)
-ifft(transform)
+fft!(transform)
+ifft!(transform)
 
 @distributed_info tarray.zfield ≈ carray

@@ -1,5 +1,5 @@
 using FFTW
-import FFTW: fft, ifft
+import FFTW: fft!, ifft!
 
 struct DistributedTransform{T, P}
     arrays :: T
@@ -39,7 +39,7 @@ function DistributedTransform(arrays::TransposableArrays)
     DistributedTransform(arrays, plans)
 end
 
-@inline function fft(transform::DistributedTransform)
+@inline function fft!(transform::DistributedTransform)
     plans  = transform.plans
     arrays = transform.arrays
     
@@ -52,7 +52,7 @@ end
     return nothing
 end
 
-@inline function ifft(transform::DistributedTransform)
+@inline function ifft!(transform::DistributedTransform)
     plans  = transform.plans
     arrays = transform.arrays
     
