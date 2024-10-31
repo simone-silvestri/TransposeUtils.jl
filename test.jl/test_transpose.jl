@@ -21,4 +21,14 @@ ranks_y = 2
     transpose_y_to_z!(tarray)
 
     @test tarray.zfield == carray
+
+    # Test the transform
+    transform = DistributedTransform(tarray)
+
+    # After a forward and backward transform the result should not have changed
+    fft!(transform)
+    ifft!(transform)
+
+    # The result should be the same
+    tarray.zfield ≈ carray
 end
