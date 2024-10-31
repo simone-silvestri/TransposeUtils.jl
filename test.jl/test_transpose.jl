@@ -11,7 +11,7 @@ ranks_y = 2
     partition = Partition(CPU(); ranks = (ranks_x, ranks_y, 1))
     carray    = zeros(partition, ComplexF64, 200, 200, 100)
     
-    _set!(carray, (i, j, k) -> rand() + rand()im)
+    set!(carray, (i, j, k) -> rand() + rand()im)
     
     tarray = TransposableArrays(carray, partition)
 

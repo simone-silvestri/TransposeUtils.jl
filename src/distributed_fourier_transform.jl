@@ -39,6 +39,7 @@ function DistributedTransform(arrays::TransposableArrays)
     DistributedTransform(arrays, plans)
 end
 
+# The input of fft! is on transform.zfield and the output is on transform.xfield
 @inline function fft!(transform::DistributedTransform)
     plans  = transform.plans
     arrays = transform.arrays
@@ -52,6 +53,7 @@ end
     return nothing
 end
 
+# The input of ifft! is on transform.xfield and the output is on transform.zfield
 @inline function ifft!(transform::DistributedTransform)
     plans  = transform.plans
     arrays = transform.arrays
