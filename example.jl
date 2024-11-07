@@ -20,9 +20,6 @@ set!(carray, (i, j, k) -> rand() + rand()im)
 # - tarray.yfield, the y-local configuration (rank size in y == 1)
 # - tarray.zfield, the z-local configuration (rank size in z == 1, the default)
 tarray = TransposableArrays(carray, partition)
-@distributed_info size(tarray.xfield)
-@distributed_info size(tarray.yfield)
-@distributed_info size(tarray.zfield)
 
 # Transposing between the different configurations
 # z-local (the default), y-local, and x-local

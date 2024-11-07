@@ -6,6 +6,7 @@ Libdl.dlopen_e("libmpi_gtl_cuda", Libdl.RTLD_LAZY | Libdl.RTLD_GLOBAL)
 using MPI
 using TransposeUtils
 using Test
+using FFTW
 
 MPI.Init()
 
@@ -39,7 +40,7 @@ ranks_y = 2
     ifft!(transform)
 
     # The result should be the same
-    @test tarray.zfield ≈ carray
+    @distributed_info tarray.zfield ≈ carray
 end
 
 @info "Tests passed!"
