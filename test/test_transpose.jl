@@ -14,6 +14,8 @@ child_arch = get(ENV, "GPU_TEST", nothing) == true ? GPU() : CPU()
 ranks_x = 2
 ranks_y = 2
 
+@info MPI.Comm_size(MPI.COMM_WORLD)
+
 @testset "Test the transpose" begin
     partition = Partition(child_arch; ranks = (ranks_x, ranks_y, 1))
     carray    = zeros(partition, ComplexF64, 200, 200, 100)
@@ -37,5 +39,7 @@ ranks_y = 2
     ifft!(transform)
 
     # The result should be the same
-    tarray.zfield ≈ carray
+    @test tarray.zfield ≈ carray
 end
+
+@info "Tests passed!"
