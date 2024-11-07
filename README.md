@@ -59,10 +59,6 @@ ssilvest@nid001040:/pscratch/sd/s/ssilvest/TransposeUtils.jl> srun -n 4 $JULIA -
 [ Info: 4
 [ Info: 4
 [ Info: 4
-[ Info: 4
-[ Info: 4
-[ Info: 4
-[ Info: 4
 ┌ Info: rank 0
 └   tarray.zfield ≈ carray = false
 ┌ Info: rank 1
@@ -88,10 +84,6 @@ Test the transpose |    1      1  2m01.7s
 for GPU test, pass `GPU_TEST=true` environment variable:
 ```
 ssilvest@nid001040:/pscratch/sd/s/ssilvest/TransposeUtils.jl> GPU_TEST=true srun -n 4 $JULIA --project test/test_transpose.jl
-[ Info: 4
-[ Info: 4
-[ Info: 4
-[ Info: 4
 [ Info: 4
 [ Info: 4
 [ Info: 4
